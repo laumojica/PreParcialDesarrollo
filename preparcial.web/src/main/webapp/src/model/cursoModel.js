@@ -35,6 +35,13 @@ define(['model/_cursoModel'], function() {
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
             }
+            
+            if(!attrs.programa){
+                validationMessage = "No hay cursos en la universidad que no posean un programa academico";
+            }
+            if(attrs.programa.length!== 4 ||attrs.programa.toUpperCase()!== attrs.programa){
+                validationMessage = "El programa academico debe de ser de 4 letras";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
