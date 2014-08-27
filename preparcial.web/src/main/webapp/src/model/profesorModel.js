@@ -38,6 +38,7 @@ define(['model/_profesorModel'], function() {
             if(attrs.aniosExperiencia < 5){
                 validationMessage +="No cumple con la experiencia requerida";
            }
+  
             if(validationMessage.length>0){
                return validationMessage;
             }

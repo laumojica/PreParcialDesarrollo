@@ -32,7 +32,19 @@ define(['component/_CRUDComponent', 'controller/toolbarController', 'model/toolb
         name: 'curso',
         model: App.Model.CursoModel,
         listModel: App.Model.CursoList,
-        controller : App.Controller.CursoController
+        controller : App.Controller.CursoController,
+        
+         postInit: function(){
+            var self = this;
+            this.toolbarModel.set('createName', 'Crear');
+            this.toolbarModel.set('refreshName', 'Refrescar');
+            this.toolbarModel.set('showPrint', false);
+            this.toolbarModel.set('showSearch', false);
+            this.toolbarModel.set('title', 'Curso');
+            this.addButton({name: "Idioma", icon: "glyphicon-question-sign", }, function() {
+                 self.componentController.language();
+            });
+        }
     });
     return App.Component.CursoComponent;
 });

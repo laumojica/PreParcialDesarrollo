@@ -34,14 +34,25 @@ define(['component/_CRUDComponent', 'controller/toolbarController','model/profes
         listModel: App.Model.ProfesorList,
         controller : App.Controller.ProfesorController,
         
-         postInit: function(options) {
-        var self = this;
-
-        this.addButton({name: "Profesores destacados", icon: "glyphicon-stats", }, function() {
+            postInit: function(){
+            var self = this;
+           
+            this.toolbarModel.set('createName', 'Crear');
+            this.toolbarModel.set('refreshName', 'Refrescar');
+            this.toolbarModel.set('showPrint', false);
+            this.toolbarModel.set('showSearch', false);
+            this.toolbarModel.set('title', 'Profesor');
+            this.addButton({name: "Idioma", icon: "glyphicon-question-sign", }, function() {
+                 self.componentController.language();
+                 });
+            this.addButton({name: "Profesores destacados", icon: "glyphicon-stats", }, function() {
                  self.componentController.profe();
-             
-                });
-        }
+                  });
+    Backbone.on(self.componentId + '-profesor-show-titulo', function(params) {
+                self.componentController.titulo(params);
+             });
+         }
     });
     return App.Component.ProfesorComponent;
 });
+ 

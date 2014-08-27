@@ -32,15 +32,25 @@ define(['component/_CRUDComponent', 'controller/toolbarController', 'model/toolb
         name: 'seccion',
         model: App.Model.SeccionModel,
         listModel: App.Model.SeccionList,
+
         controller : App.Controller.SeccionController,
         
-        postInit: function(options) {
-        var self = this;
-        this.addButton({name: "Cupos de las secciones", icon: "glyphicon-stats", }, function() {
+         postInit: function(){
+            var self = this;
+            this.toolbarModel.set('createName', 'Crear');
+            this.toolbarModel.set('refreshName', 'Refrescar');
+            this.toolbarModel.set('showPrint', false);
+            this.toolbarModel.set('showSearch', false);
+            this.toolbarModel.set('title', 'Secci&#243n');
+            this.addButton({name: "Cupos de las secciones", icon: "glyphicon-stats", }, function() {
                  self.componentController.cupos();
              
                 });
+       
+            this.addButton({name: "Idioma", icon: "glyphicon-question-sign", }, function() {
+                 self.componentController.language();
+            });
         }
-    });
+        });
     return App.Component.SeccionComponent;
 });
